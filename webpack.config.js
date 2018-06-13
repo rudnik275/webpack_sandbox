@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -53,7 +54,11 @@ module.exports = {
             filename: 'index.html',
             template: 'src/index.html',
             inject: true
-        })
+        }),
+
+        // new webpack.ProvidePlugin({
+        //     $: "jquery"
+        // })
     ],
 
     resolve: {
@@ -65,5 +70,7 @@ module.exports = {
     devServer: {
         contentBase: './dist',
         open: true
-    }
+    },
+
+    devtool: 'cheap-eval-source-map'
 };
